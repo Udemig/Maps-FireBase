@@ -11,7 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		5D6971252B3B627200EC51BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D6971242B3B627200EC51BF /* GoogleService-Info.plist */; };
+		5D2C4FE62B434D8A00F28839 /* appIconExample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D2C4FE52B434D8900F28839 /* appIconExample.jpg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		97E95DAA0A367E28D426F1C0 /* Pods_Mapping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283EC819E0439A444D2F763C /* Pods_Mapping.framework */; };
 		9AD2CC9EEC8557B62E063C76 /* Pods_Mapping_MappingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E6C1210D7639479FFFF1A4 /* Pods_Mapping_MappingTests.framework */; };
@@ -41,7 +41,7 @@
 		3B4392A12AC88292D35C810B /* Pods-Mapping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mapping.debug.xcconfig"; path = "Target Support Files/Pods-Mapping/Pods-Mapping.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Mapping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mapping.release.xcconfig"; path = "Target Support Files/Pods-Mapping/Pods-Mapping.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Mapping-MappingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mapping-MappingTests.debug.xcconfig"; path = "Target Support Files/Pods-Mapping-MappingTests/Pods-Mapping-MappingTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5D6971242B3B627200EC51BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D2C4FE52B434D8900F28839 /* appIconExample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appIconExample.jpg; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Mapping/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Mapping-MappingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mapping-MappingTests.release.xcconfig"; path = "Target Support Files/Pods-Mapping-MappingTests/Pods-Mapping-MappingTests.release.xcconfig"; sourceTree = "<group>"; };
 		A4E6C1210D7639479FFFF1A4 /* Pods_Mapping_MappingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mapping_MappingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +88,7 @@
 		13B07FAE1A68108700A75B9A /* Mapping */ = {
 			isa = PBXGroup;
 			children = (
-				5D6971242B3B627200EC51BF /* GoogleService-Info.plist */,
+				5D2C4FE52B434D8900F28839 /* appIconExample.jpg */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -247,7 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				5D6971252B3B627200EC51BF /* GoogleService-Info.plist in Resources */,
+				5D2C4FE62B434D8A00F28839 /* appIconExample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +488,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Mapping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Harita Notum";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,6 +518,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Mapping/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Harita Notum";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,10 +617,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
@@ -697,10 +696,7 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

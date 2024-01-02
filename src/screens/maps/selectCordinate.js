@@ -13,8 +13,10 @@ import {Map, ArrowCircleRight2} from 'iconsax-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {ADDNOTE} from '../../utils/routes';
 import CustomMarker from '../../components/maps/customMarker';
+import CustomAnimation from '../../components/uı/customAnimation';
 // create a component
-const SelectCordinate = props => {
+const SelectCordinate = ({route}) => {
+  const {currentPosition} = route?.params;
   const navigation = useNavigation();
   const [coordinate, setCordinate] = useState(null);
   const [mapType, setMapType] = useState('standart');
@@ -23,10 +25,10 @@ const SelectCordinate = props => {
     if (mapType == 'standart') setMapType('hybrid');
     else setMapType('standart');
   };
-const handleMarkerPress=(e)=>{
-const  {coordinate} =e?.nativeEvent
-setCordinate(coordinate)
-}
+  const handleMarkerPress = e => {
+    const {coordinate} = e?.nativeEvent;
+    setCordinate(coordinate);
+  };
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
@@ -60,9 +62,10 @@ setCordinate(coordinate)
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() =>
-            !coordinate
-              ? null
-              : navigation.navigate(ADDNOTE, {cordinate: coordinate,type:"Add"})
+            navigation.navigate(ADDNOTE, {
+              cordinate: coordinate ? coordinate : currentPosition,
+              type: 'Add',
+            })
           }
           style={{
             width: 70,
@@ -71,8 +74,7 @@ setCordinate(coordinate)
             bottom: 20,
             right: 10,
             zIndex: 99,
-            backgroundColor:
-              !coordinate? AppColors.GRAY : AppColors.GREEN,
+            backgroundColor: AppColors.GREEN,
             borderRadius: 200,
             justifyContent: 'center',
             alignItems: 'center',
@@ -88,20 +90,29 @@ setCordinate(coordinate)
           <ArrowCircleRight2 size={35} color={AppColors.WHITE} />
         </TouchableOpacity>
         <MapView
-        
           zoomControlEnabled={false}
           mapType={mapType}
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
           initialRegion={{
-            latitude: 41.0541648,
-            longitude: 28.9764438,
+            latitude: currentPosition?.latitude,
+            longitude: currentPosition?.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-          onPress={handleMarkerPress}
-          >
-        {coordinate && <Marker coordinate={coordinate} title='Seçilen Konum' />}
+          onPress={handleMarkerPress}>
+          {coordinate && (
+            <Marker coordinate={coordinate} title="Seçilen Konum" />
+          )}
+          <Marker
+            coordinate={{
+              latitude: currentPosition?.latitude,
+              longitude: currentPosition?.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}>
+            <CustomAnimation />
+          </Marker>
         </MapView>
       </View>
     </SafeAreaView>
